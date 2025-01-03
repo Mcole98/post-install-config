@@ -2,82 +2,149 @@
 <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
 </p>
 
-<h1>osTicket - Post-Install Configurations</h1>
-This lab demonstrates the necessary changes I make to configure osTicket so it can be used as a proper ticketing system.<br />
+<h1>osTicket - Post-Install Configuration</h1>
+This tutorial outlines the post-install configuration of the open-source help desk ticketing system osTicket.<br />
 
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop Connection
-- osTicket 
+- Remote Desktop
+- Internet Information Services (IIS)
 
-<h2>Operating Systems Used </h2>
+<h2>Operating Systems Used</h2>
 
-- Windows 10 Pro</b> (21H2)
+- Windows 10 (21H2)
 
+<h2>Post-Install Configuration Objectives</h2>
+
+- Acknowledge the difference between the Agent Panel and Admin Panel.
+- Configure Roles to define permissions for agents.
+- Set up Departments to group tickets by areas of responsibility.
+- Create Teams to pull agents from multiple departments.
+- Configure user settings to allow or restrict ticket creation.
+- Add Agents (workers) and Users (customers).
+- Set up Service Level Agreements (SLAs) for ticket response times.
+- Create Help Topics for users to categorize their tickets.
 
 <h2>Configuration Steps</h2>
 
-<p>
-<img src="https://i.imgur.com/S33TPEZ.png" height="80%" width="80%" alt="Configuration Steps"/>
-<img src="https://i.imgur.com/7HyoONM.png" height="80%" width="80%" alt="Configuration Steps"/>
-</p>
-<p>
-After installing osTicket, it is now time to make configurations to use it as a ticketing system. One thing to note is that I switch between Admin and Agent panels as each panel has different configurations. To tell which panel is used, look at the top right of the osTicket screen. If it reads Agent Panel, the Admin panel is the one being used and vice versa.
+<h3>1.) Acknowledge Agent Panel vs Admin Panel</h3>
 
-The first step to take is to make a new role called Supreme Admin. For the purposes of this lab, I am intentionally creating a role that has every permission that can be granted. To create a new role, open the Admin panel enter the Agents Menu. Click on Roles and create the new role from there.
-</p>
-<br />
+- The **Agent Panel** is used by agents to work on tickets.
+- The **Admin Panel** is used to manage system settings, configurations, and permissions.
 
-<p>
-<img src="https://i.imgur.com/EQnl5rh.png" height="80%" width="80%" alt="Configuration Steps"/>
-</p>
-<p>
-Next, a new Department will be created for System Administrators. In the Admin panel, open the Agents menu and click on Departments to create a new Department within osTicket.
-</p>
-<br />
+<h3>2.) Configure Roles</h3>
+
+- Navigate to **Admin Panel -> Agents -> Roles**.
+- Add a new role called **Supreme Admin**.
+  - Define permissions for agents based on the role they will have. In this lab, we will give permissions for the Tickets, Tasks, and Knowledgebase sections.
 
 <p>
-<img src="https://i.imgur.com/d7WuRn8.png" height="80%" width="80%" alt="Configuration Steps"/>
+<img src="https://i.imgur.com/9dJCITM.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
 </p>
-<p>
-A new Level II Support Team will have to be created to supplement the Level I Support Team already made within osTicket. To create a new Team, enter the Admin panel and open the Agents menu. Click on Teams and add any new teams that need to be created.
-</p>
-<br />
 
 <p>
-<img src="https://i.imgur.com/UnYyh3B.png" height="80%" width="80%" alt="Configuration Steps"/>
-<img src="https://i.imgur.com/k0lElHH.png" height="80%" width="80%" alt="Configuration Steps"/>
+<img src="https://i.imgur.com/LH17Nqu.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
 </p>
-<p>
-New agents will have to be created so they can take tickets that come to the queue. To create new agents, enter the Admin panel and open the Agents menu. Click on Add New Agent and create the account credentials for each new agent. In this case, Jane and John Doe are created.
-</p>
-<br />
+
+<h3>3.) Configure Departments</h3>
+
+- Navigate to **Admin Panel -> Agents -> Departments**.
+- Add a new department called **SysAdmins**.
+  - Use departments to control ticket visibility and assign areas of responsibility (e.g., Help Desk, SysAdmins, Networking).
 
 <p>
-<img src="https://i.imgur.com/gHvbfS3.png" height="80%" width="80%" alt="Configuration Steps"/>
+<img src="https://i.imgur.com/WmvPMtk.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
 </p>
-<p>
-New users will be created so they can create tickets so that the agents can receive and triage them. To create new users, enter the Agents panel and open the Users menu. Click on Add User and create the account credentials necessary for each new user. In this case, Karen and Ken have been created.
-</p>
-<br />
+
+<h3>4.) Configure Teams</h3>
+
+- Navigate to **Admin Panel -> Agents -> Teams**.
+- Create a new team called **Online Banking**.
+  - Pull agents from different departments to form specialized teams.
 
 <p>
-<img src="https://i.imgur.com/pI1Cf3Q.png" height="80%" width="80%" alt="Configuration Steps"/>
+<img src="https://i.imgur.com/4FEa6Y1.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
 </p>
-<p>
-Service Level Agreements (SLAs) will have to be made in order to categorize tickets according to their level of impact. To make new SLAs, enter the Admin panel and open the Manage menu. Click on SLA and create any needed SLAs. In this case, SEV-A, B, and C have been created to categorize tickets that need to be resolved within 1 hour, 4 hours, and 8 hours respectively.
-</p>
-<br />
+
+<h3>5.) Allow Anyone to Create Tickets</h3>
+
+- Navigate to **Admin Panel -> Settings -> User Settings**.
+- Uncheck **Require registration and login to create tickets** to enforce ticket creation by anyone.
+- Enable **Public - Anyone can register** to disable requiring users to register and log in before creating tickets.
 
 <p>
-<img src="https://i.imgur.com/v3zTkfy.png" height="80%" width="80%" alt="Configuration Steps"/>
+<img src="https://i.imgur.com/zwlsNTN.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
 </p>
+
+<h3>6.) Configure Agents (Workers)</h3>
+
+- Navigate to **Admin Panel -> Agents -> Add New**.
+- Add agents with the following details:
+  - **Jane**: Assigned to the **SysAdmins** department.
+  - **John**: Assigned to the **Support** department.
+
 <p>
-Finally, Help Topics need to be created to help users select an appropriate category that describes their problem so that Agents get an idea of what problem is described in the ticket. To make a new Help Topic, enter the Admin panel and open the Manage menu. Click on Help Topics and click on Add New Help Topic. In this case, I have added the following in order to use later for when I create new tickets to resolve: Business Critical Outage, Personal Computer Issues, Equipment Reset, and Password Request.
+<img src="https://i.imgur.com/0Yyr2vR.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
 </p>
-<br />
 
-<h2>osTicket Configurations are Complete </h2>
+<p>
+<img src="https://i.imgur.com/uCV94g6.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
 
-Now that the configurations have been set in place, I can now utilize osTicket as a proper ticketing system. I can create tickets and be able to traige them as if I were in a real environment.
+<p>
+<img src="https://i.imgur.com/nALrgaJ.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/yzZof2X.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<h3>7.) Configure Users (Customers)</h3>
+
+- Navigate to **Agent Panel -> Users -> Add New**.
+- Add users with the following details:
+  - **Karen**
+  - **Ken**
+ 
+<p>
+<img src="https://i.imgur.com/xrJ8gm6.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<h3>8.) Configure SLA (Service Level Agreements)</h3>
+
+- Navigate to **Admin Panel -> Manage -> SLA**.
+- Add the following SLAs:
+  - **Sev-A**: Grace Period = 1 hour, Schedule = 24/7.
+  - **Sev-B**: Grace Period = 4 hours, Schedule = 24/7.
+  - **Sev-C**: Grace Period = 8 hours, Schedule = Business Hours.
+
+<p>
+<img src="https://i.imgur.com/cLC1cDs.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/scM2F5T.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/PGe4b44.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<h3>9.) Configure Help Topics</h3>
+
+- Navigate to **Admin Panel -> Manage -> Help Topics**.
+- Add the following help topics for users to select when creating a ticket:
+  - **Business Critical Outage**
+  - **Personal Computer Issues**
+  - **Equipment Request**
+  - **Password Reset**
+  - **Other**
+
+<p>
+<img src="https://i.imgur.com/QkUOKCA.png" height="80%" width="80%" alt="Step 2 Lab 3"/>
+</p>
+
+<h2>Conclusion</h2>
+
+By completing the post-installation configuration steps, you have successfully customized osTicket to suit your organization's requirements. You are now ready to start using osTicket to manage and resolve customer issues efficiently.
